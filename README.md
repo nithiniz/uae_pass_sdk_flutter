@@ -155,6 +155,25 @@ buildscript {
     ext.kotlin_version = '1.7.10'
 ```
 
+Document Signature
+
+Function signDocument
+
+Parameters
+urlString - required
+iOS:  pass the signature URL created
+Android: pass the document base64
+
+signatureInfo - optional
+iOS: Not required and no effect
+Android: Pass the base64 encoded string of the signatureinfo json. 
+ 
+Return String
+iOS: the SpId of the document
+Android: Document Url and SpId delimited using '/***/'
+
+  
+
 [Read Common issues](https://docs.uaepass.ae/faq/common-integration-issues)
 
 ## Access Token
