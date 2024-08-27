@@ -173,7 +173,7 @@ class UaePassFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware,Plug
             fos.write(decodedBytes)
             fos.flush()
         }
-        val documentSigningParams = loadDocumentSigningJson()
+        val documentSigningParams = loadDocumentSigningJson(call.argument<String>("signatureInfo"))
         documentSigningParams?.let {
             val requestModel = getDocumentRequestModel(file, it)
             signDocument(activity!!, requestModel, object : UAEPassDocumentSigningCallback {
@@ -295,12 +295,11 @@ class UaePassFlutterPlugin: FlutterPlugin, MethodCallHandler, ActivityAware,Plug
      *
      * @return DocumentSigningRequestParams Mandatory Parameters
      */
-    private fun loadDocumentSigningJson(): DocumentSigningRequestParams? {
+    private fun loadDocumentSigningJson(base64Json: String): DocumentSigningRequestParams? {
        var json: String? = null
-        var jsonbase: String = "ewogICAgInByb2Nlc3NfdHlwZSI6ICJ1cm46c2FmZWxheWVyOmVpZGFzOnByb2Nlc3Nlczpkb2N1bWVudDpzaWduOmVzaWdwIiwKICAgICJsYWJlbHMiOiBbCiAgICAgICAgWwogICAgICAgICAgICAiYWR2YW5jZWQiLAogICAgICAgICAgICAiZGlnaXRhbGlkIiwKICAgICAgICAgICAgInNlcnZlciIKICAgICAgICBdCiAgICBdLAogICAgInNpZ25lciI6IHsKICAgICAgICAic2lnbmF0dXJlX3BvbGljeV9pZCI6ICJ1cm46c2FmZWxheWVyOmVpZGFzOnBvbGljaWVzOnNpZ246ZG9jdW1lbnQ6cGRmIiwKICAgICAgICAicGFyYW1ldGVycyI6IHsKICAgICAgICAgICAgInR5cGUiOiAicGRmIiwKICAgICAgICAgICAgInNpZ25hdHVyZV9maWVsZCI6IHsKICAgICAgICAgICAgICAgICJuYW1lIjogIlNpZ24xIiwKICAgICAgICAgICAgICAgICJsb2NhdGlvbiI6IHsKICAgICAgICAgICAgICAgICAgICAicGFnZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgIm51bWJlciI6ICJsYXN0IgogICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgInJlY3RhbmdsZSI6IHsKICAgICAgICAgICAgICAgICAgICAgICAgIngiOiAzNTAsCiAgICAgICAgICAgICAgICAgICAgICAgICJ5IjogMTAwLAogICAgICAgICAgICAgICAgICAgICAgICAiaGVpZ2h0IjogNTAsCiAgICAgICAgICAgICAgICAgICAgICAgICJ3aWR0aCI6IDIxNQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAiYXBwZWFyYW5jZSI6IHsKICAgICAgICAgICAgICAgICAgICAic2lnbmF0dXJlX2RldGFpbHMiOiB7CiAgICAgICAgICAgICAgICAgICAgICAgICJkZXRhaWxzIjogWwogICAgICAgICAgICAgICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0eXBlIjogInN1YmplY3QiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0aXRsZSI6ICJTaWduZXIgTmFtZTogIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJkYXRlIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAidGl0bGUiOiAiU2lnbmF0dXJlIERhdGU6ICIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0sCiAgICAidWlfbG9jYWxlcyI6IFsKICAgICAgICAiZW5fVVMiCiAgICBdLAogICAgImZpbmlzaF9jYWxsYmFja191cmwiOiAidWFlcGFzc3N1cGVyYXBwOi8vc2lnbiIsCiAgICAidmlld3MiOiB7CiAgICAgICAgImRvY3VtZW50X2FncmVlbWVudCI6IHsKICAgICAgICAgICAgInNraXBfc2VydmVyX2lkIjogImZhbHNlIgogICAgICAgIH0KICAgIH0sCiAgICAidGltZXN0YW1wIjogewogICAgICAgICJwcm92aWRlcl9pZCI6ICJ1cm46dWFlOnR3czpnZW5lcmF0aW9uOnBvbGljeTpkaWdpdGFsaWQiCiAgICB9Cn0K"
         
         json = try {
-            val buffer: ByteArray = Base64.getDecoder().decode(jsonbase)
+            val buffer: ByteArray = Base64.getDecoder().decode(base64Json)
             String(buffer, Charset.forName("UTF-8"))
         } catch (ex: IOException) {
             ex.printStackTrace()
