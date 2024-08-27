@@ -173,8 +173,9 @@ Function: signDocument
 Android: Pass the base64 encoded string of the signatureinfo json. 
 ```
 
+- Return String
+
 ```bash 
-Return String
 iOS: the SpId of the document
 Android: Document Url and SpId delimited using '/***/'
 ```
