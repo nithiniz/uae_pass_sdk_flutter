@@ -38,6 +38,22 @@ class MethodChannelUaePass extends UaePassPlatform {
     return result!;
   }
 
+
+/// 
+/// urlString 
+/// iOS:  pass the signature URL created
+/// Android: pass the document base64
+/// 
+/// signatureInfo
+/// iOS: Not required and no effect
+/// Android: Pass the base64 encoded string of the signatureinfo json. 
+///  
+/// Return String
+/// iOS: the SpId of the document
+/// Android: Document Url and SpId delimited using '/***/'
+/// 
+  
+  
   @override
   Future<String> signDocument(String urlString, {String? signatureInfo}) async {
     final result = await methodChannel.invokeMethod<String>('sign_document', {"url": urlString, "signatureInfo" : signatureInfo ?? ''});
