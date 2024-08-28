@@ -33,9 +33,9 @@ class UaePass {
     }
   }
 
-  Future<String> signDocument(String urlString) async {
+  Future<String> signDocument(String urlString, {String? signatureInfo}) async {
     try {
-      return await UaePassPlatform.instance.signDocument(urlString);
+      return await UaePassPlatform.instance.signDocument(urlString, signatureInfo: signatureInfo ?? '');
     } on PlatformException catch (e) {
       throw (e.message ?? "Unknown error");
     } catch (e) {

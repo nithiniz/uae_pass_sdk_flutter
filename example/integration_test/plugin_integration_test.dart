@@ -9,7 +9,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
-import 'package:uae_pass_flutter/uae_pass.dart';
+import 'package:uae_pass_sdk_flutter/uae_pass.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

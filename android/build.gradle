@@ -18,7 +18,7 @@ rootProject.allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs project(':uae_pass_flutter').file('libs')
+            dirs project(':uae_pass_sdk_flutter').file('libs')
         }
     }
 }

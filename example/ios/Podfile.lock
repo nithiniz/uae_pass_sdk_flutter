@@ -2,26 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
-  - uae_pass_flutter (0.0.1):
+  - uae_pass_sdk_flutter (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - uae_pass_flutter (from `.symlinks/plugins/uae_pass_flutter/ios`)
+  - uae_pass_sdk_flutter (from `.symlinks/plugins/uae_pass_sdk_flutter/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  uae_pass_flutter:
-    :path: ".symlinks/plugins/uae_pass_flutter/ios"
+  uae_pass_sdk_flutter:
+    :path: ".symlinks/plugins/uae_pass_sdk_flutter/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   integration_test: 13825b8a9334a850581300559b8839134b124670
-  uae_pass_flutter: 02eda84872f7d357f2863f50379d5dc1cef5f0bc
+  uae_pass_sdk_flutter: 02eda84872f7d357f2863f50379d5dc1cef5f0bc
 
 PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 

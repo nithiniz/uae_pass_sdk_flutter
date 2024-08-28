@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:uae_pass_flutter/uae_pass.dart';
-import 'package:uae_pass_flutter/uae_pass_platform_interface.dart';
-import 'package:uae_pass_flutter/uae_pass_method_channel.dart';
+import 'package:uae_pass_sdk_flutter/uae_pass.dart';
+import 'package:uae_pass_sdk_flutter/uae_pass_platform_interface.dart';
+import 'package:uae_pass_sdk_flutter/uae_pass_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockUaePassPlatform
@@ -28,7 +28,7 @@ class MockUaePassPlatform
   }
 
    @override
-  Future<Map<String, String>> signDocument(String url) {
+  Future<String> signDocument(String url, {String? signatureInfo}) {
     // TODO: implement signOut
     throw UnimplementedError();
   }

@@ -32,7 +32,7 @@ abstract class UaePassPlatform extends PlatformInterface {
     throw UnimplementedError('signIn() has not been implemented.');
   }
 
-  Future<String> signDocument(String urlString) {
+  Future<String> signDocument(String urlString, {String? signatureInfo}) {
     throw UnimplementedError('signDocument(String urlString) has not been implemented.');
   }
 
